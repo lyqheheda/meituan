@@ -1,0 +1,129 @@
+<template>
+  <div class="header">
+    <!-- 顶部通栏 -->
+    <div class="top-wrapper">
+      <div class="back-wrapper">
+        <span class="icon-arrow_lift"></span>
+      </div>
+      <form class="search-wrapper">
+        <div class="search-icon"></div>
+        <input type="text" class="search-bar" placeholder="搜索店内商品" />
+      </form>
+      <div class="more-wrapper">
+        <a href="#" class="spliting-bt">拼单</a>
+        <div class="more-bt">
+          <i class="s-circle"></i>
+          <i class="s-circle"></i>
+          <i class="s-circle"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="content-wrapper">
+      <div class="icon" :style="avatar_bg">
+        <!-- <img :src="poiInfo.pic_url" alt=""> -->
+      </div>
+      <div class="name">
+        <h3>{{poiInfo.name}}</h3>
+      </div>
+      <div class="collection">
+        <img src="./star.png" alt="">
+        <span>收藏</span>
+      </div>
+      
+      
+      
+    </div>
+
+    <!-- 公告内容 -->
+    <div class="bulletin-wrapper">
+      <img class="icon" v-if="poiInfo.discounts2" :src="poiInfo.discounts2[0].icon_url" alt="">
+      <span class="text" v-if="poiInfo.discounts2">{{poiInfo.discounts2[0].info}}</span>
+
+
+      <div class="detail" v-if="poiInfo.discounts2" @click="showBulletin">
+        {{poiInfo.discounts2.length}}个活动
+        <span class="icon-keyboard_arrow_right"></span>
+      </div>
+      
+    </div>
+
+    <!-- 背景 -->
+    <div class="bg-wrapper" :style="content_bg">
+    </div>
+
+    <!-- 公告详情 -->
+    <transition name="detail">
+    <div class="bulletin-detail" v-show="isShow">
+      <div class="detail-wrapper">
+        <div class="main-wrapper" :style="detail_bg">
+          <div class="icon" :style="avatar_bg"></div>
+          <h3 class="name">{{poiInfo.name}}</h3>
+          <!-- 评价 稍后******** -->
+          <p class="tip">
+            {{poiInfo.min_price_tip}} <i>|</i>
+            {{poiInfo.shipping_fee_tip}} <i>|</i>
+            {{poiInfo.delivery_time_tip}}
+          </p>
+          <p class="time">
+            配送时间: {{poiInfo.shipping_time}}
+          </p>
+          <div class="discounts" v-if="poiInfo.discounts2">
+            <p>
+              <img :src="poiInfo.discounts2[0].icon_url" alt="">
+              <span>{{poiInfo.discounts2[0].info}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="close-wrapper">
+          <span class="icon-close" @click="closeBulletin"></span>
+        </div>
+      </div>
+    </div>
+    </transition>
+    
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      isShow: false, //公告详情是否显示
+    }
+  },
+  props: {
+    poiInfo: {
+      type: Object,
+      default: {},
+    },
+  },
+  computed:{
+    content_bg(){
+      return `background-image: url(${this.poiInfo.head_pic_url})`;
+    },
+    avatar_bg(){
+      return `background-image: url(${this.poiInfo.pic_url})`;
+    },
+    detail_bg(){
+      return `background-image: url(${this.poiInfo.poi_back_pic_url})`;
+    }
+  },
+  methods:{
+    showBulletin(){
+      this.isShow=true;
+    },
+    closeBulletin(){
+      this.isShow=false;
+    }
+  }
+  
+};
+</script>
+
+<style>
+@import url("Header.css");
+/* 导入字体样式 */
+@import url("../../common/styles/icon.css");
+</style>
