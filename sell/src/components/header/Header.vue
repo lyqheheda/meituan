@@ -60,7 +60,10 @@
         <div class="main-wrapper" :style="detail_bg">
           <div class="icon" :style="avatar_bg"></div>
           <h3 class="name">{{poiInfo.name}}</h3>
-          <!-- 评价 稍后******** -->
+          <div class="score">
+            <Star :score="poiInfo.wm_poi_score"></Star>
+            <span>{{poiInfo.wm_poi_score}}</span>
+          </div>
           <p class="tip">
             {{poiInfo.min_price_tip}} <i>|</i>
             {{poiInfo.shipping_fee_tip}} <i>|</i>
@@ -87,11 +90,19 @@
 </template>
 
 <script>
+
+import Star from "../Star/Star.vue";
+
+
+
 export default {
   data(){
     return {
       isShow: false, //公告详情是否显示
     }
+  },
+  components:{
+    Star
   },
   props: {
     poiInfo: {
@@ -123,7 +134,332 @@ export default {
 </script>
 
 <style>
-@import url("Header.css");
+
 /* 导入字体样式 */
 @import url("../../common/styles/icon.css");
+
+.header {
+  height: 160px;
+  padding-top: 20px
+}
+
+.header .top-wrapper {
+  position: relative;
+}
+
+.header .top-wrapper .back-wrapper {
+  width: 50px;
+  height: 31px;
+  /* background: red; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  line-height: 31px;
+}
+
+.header .top-wrapper .back-wrapper span {
+  color: white;
+  display: inline-block;
+}
+
+.header .top-wrapper .search-wrapper {
+  width: 100%;
+  height: 31px;
+  padding: 0 104px 0 50px;
+  box-sizing: border-box;
+}
+
+.header .top-wrapper .search-wrapper .search-icon {
+  width: 28px;
+  height: 31px;
+  background: url("titans_h5_search@2x.png") no-repeat 11px center;
+  position: absolute;
+  background-size: 13px;
+}
+
+.header .top-wrapper .search-wrapper .search-bar {
+  width: 100%;
+  height: 31px;
+  border: 0;
+  box-sizing: border-box;
+  background-color: #cdcdcc;
+  border-radius: 25px;
+  padding-left: 28px;
+  outline: none;
+}
+
+
+.header .top-wrapper .more-wrapper {
+  width: 104px;
+  height: 31px;
+  /* background: blue; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 15px 0 24px;
+  box-sizing: border-box;
+}
+
+.header .top-wrapper .more-wrapper .spliting-bt {
+  width: 30px;
+  height: 17px;
+  color: white;
+  border: 1px solid white;
+  text-align: center;
+  line-height: 17px;
+  float: left;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+
+.header .top-wrapper .more-wrapper .more-bt {
+  float: left;
+  width: 20px;
+  height: 24px;
+  margin-left: 13px;
+  margin-top:7px
+}
+
+
+.header .top-wrapper .more-wrapper .more-bt .s-circle {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+
+/* 主体内容 */
+.header .content-wrapper {
+  padding: 17px 10px 11px;
+  height: 50px;
+}
+
+.header .content-wrapper .icon {
+  width: 50px;
+  height:50px;
+  background-size: 135% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  float: left;
+}
+
+.header .content-wrapper .name {
+  float: left;
+  padding: 18px 0 0 12px;
+
+}
+
+.header .content-wrapper .name h3{
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.header .content-wrapper .collection {
+  padding-top: 6px;
+  width: 25px;
+  height: 37px;
+  float: right;
+  text-align: center;
+
+}
+
+.header .content-wrapper .collection img {
+  width: 20px;
+  height: 20px;
+  /* margin-bottom: 7px; */
+}
+
+.header .content-wrapper .collection span {
+  margin-top: 7px;
+  color: white;
+  font-size: 11px;
+}
+
+/* 公告内容 */
+.bulletin-wrapper {
+  padding: 0 10px;
+  height: 16px;
+}
+
+.bulletin-wrapper .icon {
+  width: 16px;
+  height: 16px;
+  float: left;
+  margin-right:6px;
+}
+
+.bulletin-wrapper .text {
+  font-size: 11px;
+  color: white;
+  float: left;
+  line-height: 16px;
+}
+
+.bulletin-wrapper .detail {
+  float: right;
+  font-size: 11px;
+  color: white;
+  line-height: 16px;
+}
+
+.bulletin-wrapper .detail span {
+  font-size: 16px;
+  line-height: 16px;
+  float: right;
+}
+
+.header .bg-wrapper {
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: -1;
+
+  background-size: 100% 135%;
+  background-position: center -10px;
+
+}
+
+
+.header .bulletin-detail {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(98,98,98,0.8); 
+  z-index: 1;
+}
+
+.bulletin-detail .detail-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 43px 20px 125px;
+  box-sizing: border-box;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper{
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .score {
+  height: 10px;
+  margin-top: 6px;
+  text-align: center;
+  font-size: 0;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .score .star {
+  display: inline-block;
+  margin-right: 7px;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .score span {
+  display: inline-block;
+  font-size: 10px;
+  color: white;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .icon {
+  width: 60px;
+  height:60px;
+  background-size: 135% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 40px;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .name {
+  font-size: 15px;
+  margin-top: 13px;
+  color: white;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .tip {
+  font-size: 11px;
+  margin-top: 8px;
+  color: #bababc;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .tip i {
+  margin: 0 7px;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .time {
+  font-size: 11px;
+  margin-top: 13px;
+  color: #bababc;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .discounts {
+  margin-top: 20px;
+  padding: 0 20px;
+  
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .discounts p {
+  padding-top: 20px;
+  border-top: 1px solid #bababc;
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .discounts  img{
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+
+}
+
+.bulletin-detail .detail-wrapper .main-wrapper .discounts  span {
+  font-size: 11px;
+  line-height: 16px;
+  color: white;
+}
+
+.bulletin-detail .detail-wrapper .close-wrapper {
+  padding-top: 20px;
+  height: 40px;
+  text-align: center;
+  
+}
+
+.bulletin-detail .detail-wrapper .close-wrapper span {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: white;
+  display: inline-block;
+  background: rgba(118,118,118,0.7);
+  border: 1px solid rgba(140,140,140,0.9);
+  box-sizing: border-box;
+}
+
+.detail-enter-active,.detail-leave-active {
+  transition: 0.5s all;
+}
+
+.detail-enter,.detail-leave-to {
+  opacity: 0;
+}
+
+.detail-enter-to,.detail-leave{
+  opacity: 1;
+}
+
+
 </style>
