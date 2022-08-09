@@ -139,8 +139,9 @@ export default {
 @import url("../../common/styles/icon.css");
 
 .header {
-  height: 160px;
-  padding-top: 20px
+  height: 150px;
+  padding-top: 20px;
+  box-sizing: border-box;
 }
 
 .header .top-wrapper {
