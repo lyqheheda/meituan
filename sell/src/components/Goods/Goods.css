@@ -12,7 +12,7 @@
 
 .goods .menu-wrapper {
     flex: 0 0 85px;
-    background-color: f4f4f4;
+    background-color: #f4f4f4;
 }
 
 .goods .menu-wrapper .menu-item.current {

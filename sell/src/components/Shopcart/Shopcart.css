@@ -1,0 +1,17 @@
+.shopcart {
+    width: 100%;
+    height: 51px;
+    background-color: #514f4f;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+}
+
+.shopcart .content-left{
+    flex: 1;
+}
+
+.shopcart .content-right{
+    flex: 0 0 110px;
+}
