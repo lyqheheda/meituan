@@ -62,13 +62,18 @@
                   <span class="unit">/{{ food.unit }}</span>
                 </p>
               </div>
+              <div class="cartcontrol-wrapper">
+                <Cartcontrol :food="food" />
+              </div>
             </li>
           </ul>
         </li>
       </ul>
     </div>
 
-    <Shopcart/>
+    <Shopcart :shipping_fee_tip="poiInfo.shipping_fee_tip"
+    :min_price_tip="poiInfo.min_price_tip"
+    />
 
     
   </div>
@@ -77,12 +82,14 @@
 <script>
 import BScroll from "better-scroll";
 import Shopcart from "../Shopcart/Shopcart.vue";
+import Cartcontrol from "../Cartcontrol/Cartcontrol.vue";
 
 export default {
   data() {
     return {
       container: {},
       goods: [],
+      poiInfo: {},
       listHeight: [],
       scrollY: 0,
       menuScroll: {},
@@ -98,6 +105,7 @@ export default {
         if (dataSource.code == 0) {
           this.container = dataSource.data.container_operation_source;
           this.goods = dataSource.data.food_spu_tags;
+          this.poiInfo = dataSource.data.poi_info;
 
           // 调用滚动的初始化方法
           // 开始时，DOM元素没有渲染，即高度是问题
@@ -123,6 +131,7 @@ export default {
       });
       this.foodScroll = new BScroll(this.$refs.foodScroll, {
         probeType: 3,
+        click:true
       });
       this.foodScroll.on("scroll", (pos) => {
         this.scrollY = Math.abs(Math.round(pos.y));
@@ -167,7 +176,8 @@ export default {
   },
   components: {
     BScroll,
-    Shopcart
+    Shopcart,
+    Cartcontrol
   }
 };
 </script>
