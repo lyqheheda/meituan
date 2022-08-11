@@ -41,5 +41,9 @@
 }
 
 .move-enter-active,.move-leave-active {
-    transition: all;
+    transition: all 0.5s linear;
+}
+
+.move-enter,.move-leave-to {
+    transform: translateX(20px) rotate(180deg);
 }

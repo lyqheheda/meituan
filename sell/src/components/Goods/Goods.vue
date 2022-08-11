@@ -26,6 +26,11 @@
             <img :src="item.icon" v-if="item.icon" class="icon" />
             {{ item.name }}
           </p>
+
+          <i class="num" v-show="calculateCount(item.spus)">
+            {{calculateCount(item.spus)}}
+          </i>
+          
         </li>
       </ul>
     </div>
@@ -72,7 +77,7 @@
     </div>
 
     <Shopcart :shipping_fee_tip="poiInfo.shipping_fee_tip"
-    :min_price_tip="poiInfo.min_price_tip"
+    :min_price_tip="poiInfo.min_price_tip" :selectFoods="selectFoods"
     />
 
     
@@ -157,6 +162,15 @@ export default {
 
       //滚动到对应元素
       this.foodScroll.scrollToElement(el,250);
+    },
+    calculateCount(spus){
+      let count=0;
+      spus.forEach(food=>{
+        if(food.count>0){
+          count+=food.count
+        }
+      })
+      return count;
     }
   },
   computed: {
@@ -173,6 +187,17 @@ export default {
       }
       return 0;
     },
+    selectFoods() {
+      let foods=[];
+      this.goods.forEach(good=>{
+        good.spus.forEach(food=>{
+          if(food.count>0){
+            foods.push(food)
+          }
+        })
+      })
+      return foods;
+    }
   },
   components: {
     BScroll,

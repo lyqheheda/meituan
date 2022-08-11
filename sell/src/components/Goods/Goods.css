@@ -24,6 +24,7 @@
 .goods .menu-wrapper .menu-item {
     padding: 16px 23px 15px 10px;
     border-bottom: 1px solid #e4e4e4;
+    position: relative;
 }
 
 .goods .menu-wrapper .menu-item .text {
@@ -42,6 +43,21 @@
     width: 15px;
     height: 15px;
     vertical-align: middle;
+}
+
+.goods .menu-wrapper .menu-item .num {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    color: white;
+    background: red;
+    text-align: center;
+    line-height: 13px;
+    font-size: 7px;
+
 }
 
 .goods .foods-wrapper {

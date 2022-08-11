@@ -450,6 +450,20 @@ export default {
   box-sizing: border-box;
 }
 
+/* Vue过渡效果
+ <transitionn  name="detail"> </transition>
+ 
+ 进入
+ .xxx-enter   过渡开始的状态
+ .xxx-enter-to 过渡结束的状态
+ .xxx-enter-active  过渡时间、延迟、曲线函数
+ 
+ 离开
+ .xxx-leave  过渡开始的状态
+ .xxx-leave-to 过渡结束的状态
+ .xxx-leave-active 过渡时间、延迟、曲线函数
+ */
+
 .detail-enter-active,.detail-leave-active {
   transition: 0.5s all;
 }
