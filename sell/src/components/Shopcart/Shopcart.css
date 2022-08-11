@@ -89,3 +89,88 @@
     background: #ffd161;
     color: #2d2b2a;
 }
+
+
+
+.shopcart .shopcart-list {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:-1;
+    width:100%;
+}
+
+.shopcart .shopcart-list.show {
+    transform: translateY(-100%);
+}
+
+.shopcart .shopcart-list .list-top{
+    height: 30px;
+    text-align: center;
+    font-size: 11px;
+    background: #f3e6c6;
+    line-height: 30px;
+    color: 646158;
+}
+
+.shopcart .shopcart-list .list-header{
+    height: 30px;
+    background: #f4f4f4;
+}
+
+.shopcart .shopcart-list .list-header .title{
+    float: left;
+    border-left: 4px solid #53c123;
+    padding-left: 6px;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.shopcart .shopcart-list .list-header .empty{
+    float: right;
+    line-height: 30px;
+    margin-right: 10px;
+    font-size: 0;
+}
+
+.shopcart .shopcart-list .list-header .empty img{
+    height: 14px;
+    margin-right: 9px;
+    vertical-align: middle;
+}
+
+.shopcart .shopcart-list .list-header .empty span{
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.shopcart .shopcart-list .list-content {
+    max-height: 360px;
+    overflow: hidden;
+    background: white;
+}
+
+.shopcart .shopcart-list .list-content .food{
+    height: 38px;
+    padding: 12px 12px 10px 12px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.shopcart .shopcart-list .list-content .food .desc-wrapper{
+    float: left;
+    width: 240px;
+}
+
+.shopcart .shopcart-list .list-content .food .desc-wrapper .desc-left{
+
+}
+
+
+.shopcart .shopcart-list .list-content .food .desc-wrapper .desc-right{
+    
+}
+
+
+.shopcart .shopcart-list .list-content .food .cartcontrol-wrapper{
+    float:right;
+}

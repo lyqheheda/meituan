@@ -76,8 +76,7 @@
       </ul>
     </div>
 
-    <Shopcart :shipping_fee_tip="poiInfo.shipping_fee_tip"
-    :min_price_tip="poiInfo.min_price_tip" :selectFoods="selectFoods"
+    <Shopcart :poiInfo="poiInfo" :selectFoods="selectFoods"
     />
 
     
