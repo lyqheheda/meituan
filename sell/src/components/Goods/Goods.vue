@@ -50,7 +50,7 @@
           <h3 class="title">{{ item.name }}</h3>
           <!-- 具体商品列表 -->
           <ul>
-            <li v-for="food in item.spus" class="food-item">
+            <li v-for="food in item.spus" class="food-item" @click="showDetail(food)">
               <div class="icon" :style="head_bg(food.picture)"></div>
               <div class="content">
                 <h3 class="name">{{ food.name }}</h3>
@@ -76,8 +76,12 @@
       </ul>
     </div>
 
+    <!-- 购物车 -->
     <Shopcart :poiInfo="poiInfo" :selectFoods="selectFoods"
     />
+
+    <!-- 商品详情 -->
+    <Food :food="selectedFood" ref="foodView"></Food>
 
     
   </div>
@@ -87,6 +91,7 @@
 import BScroll from "better-scroll";
 import Shopcart from "../Shopcart/Shopcart.vue";
 import Cartcontrol from "../Cartcontrol/Cartcontrol.vue";
+import Food from "../Food/Food.vue";
 
 export default {
   data() {
@@ -98,6 +103,7 @@ export default {
       scrollY: 0,
       menuScroll: {},
       foodScroll: {},
+      selectedFood:{},
     };
   },
   created() {
@@ -170,6 +176,12 @@ export default {
         }
       })
       return count;
+    },
+    showDetail(food){
+      this.selectedFood=food;
+      // 调用子组件的方法，显示详情页
+      this.$refs.foodView.showView();
+
     }
   },
   computed: {
@@ -201,7 +213,8 @@ export default {
   components: {
     BScroll,
     Shopcart,
-    Cartcontrol
+    Cartcontrol,
+    Food
   }
 };
 </script>

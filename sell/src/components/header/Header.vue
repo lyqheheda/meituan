@@ -337,7 +337,7 @@ export default {
   top: 0;
   left: 0;
   background: rgba(98,98,98,0.8); 
-  z-index: 1;
+  z-index: 999;
 }
 
 .bulletin-detail .detail-wrapper {
