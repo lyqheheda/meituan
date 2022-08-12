@@ -41,5 +41,53 @@ export default {
 
 <style>
 
-    @import url("./Cartcontrol.css");
+.cartcontrol{
+    font-size: 0;
+}
+
+.cartcontrol .cart-decrease{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    font-size: 26px;
+    color: #b4b4b4;
+}
+
+.cartcontrol .cart-count{
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 26px;
+    vertical-align: top;
+
+}
+
+.cartcontrol .cart-add{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    font-size: 26px;
+    color:#ffd161;
+    position: relative;
+}
+
+.cartcontrol .cart-add .bg{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    z-index:-1;
+}
+
+.move-enter-active,.move-leave-active {
+    transition: all 0.5s linear;
+}
+
+.move-enter,.move-leave-to {
+    transform: translateX(20px) rotate(180deg);
+}
 </style>

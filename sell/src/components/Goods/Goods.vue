@@ -207,5 +207,172 @@ export default {
 </script>
 
 <style>
-@import url("./Goods.css");
+.goods {
+    display: flex;
+
+    /* 确定高度 */
+    position: absolute;
+    top: 190px;
+    bottom: 51px;
+
+    overflow: hidden;
+    width: 100%;
+}
+
+.goods .menu-wrapper {
+    flex: 0 0 85px;
+    background-color: #f4f4f4;
+}
+
+.goods .menu-wrapper .menu-item.current {
+    background-color: white;
+    font-weight: bold;
+    margin-top: -1px;
+}
+
+.goods .menu-wrapper .menu-item {
+    padding: 16px 23px 15px 10px;
+    border-bottom: 1px solid #e4e4e4;
+    position: relative;
+}
+
+.goods .menu-wrapper .menu-item .text {
+    font-size: 13px;
+    color: #333333;
+    line-height: 17px;
+    vertical-align: middle;
+
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.goods .menu-wrapper .menu-item .text .icon {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+.goods .menu-wrapper .menu-item .num {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    color: white;
+    background: red;
+    text-align: center;
+    line-height: 13px;
+    font-size: 7px;
+
+}
+
+.goods .foods-wrapper {
+    flex: 1;
+
+}
+
+.goods .foods-wrapper .container-list {
+    padding: 11px 11px 0 11px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.goods .foods-wrapper .container-list img {
+    width: 100%;
+    margin-bottom: 11px;
+    border-radius: 5px;
+}
+
+.goods .foods-wrapper .food-list {
+    padding: 11px;
+}
+
+.goods .foods-wrapper .food-list .title {
+    font-size: 13px;
+    height: 13px;
+    background-image: url("./btn_yellow_highlighted@2x.png");
+    background-repeat: no-repeat;
+    background-size: 2px 10px;
+    background-position: left center;
+    padding-left: 7px;
+    margin-bottom: 12px;
+}
+
+.goods .foods-wrapper .food-list .food-item {
+    display: flex;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.goods .foods-wrapper .food-list .food-item .icon {
+    flex: 0 0 63px;
+    background-size: 120% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 11px;
+    height: 75px;
+}
+
+.goods .foods-wrapper .food-list .food-item .content{
+    flex: 1;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .name {
+    color: #333333;
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 10px;
+    padding-right: 27px;
+    font-weight: bold;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .desc {
+    font-size: 10px;
+    line-height: 19px;
+    color: #bfbfbf;
+    margin-bottom: 8px;
+
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .extra {
+    font-size: 10px;
+    color: #bfbfbf;
+    margin-bottom: 7px;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .extra .saled {
+    margin-right: 14px;
+}
+
+.goods .foods-wrapper .food-list .food-item .content img {
+    height: 15px;
+    margin-bottom: 6px;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .price {
+    font-size: 0;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .price .text {
+    font-size: 14px;
+    color: #fb4e44;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .price .unit {
+    font-size: 12px;
+    color: #bfbfbf;
+}
+
+.goods .foods-wrapper .food-list .food-item .cartcontrol-wrapper{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
 </style>
