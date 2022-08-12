@@ -81,6 +81,7 @@
     />
 
     <!-- 商品详情 -->
+    <!-- 注意：当使用该组件时购物车列表视图会出现问题 -->
     <Food :food="selectedFood" ref="foodView"></Food>
 
     
