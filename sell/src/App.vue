@@ -4,7 +4,7 @@
     <Myheader :poiInfo="poiInfo"/>
 
     <!-- 导航 -->
-    <Mynav />
+    <Mynav :commentNum="commentNum" />
 
     <!-- 主体内容 -->
     <router-view></router-view>
@@ -25,6 +25,7 @@ export default {
     return {
       // header组件需要的信息
       poiInfo: {},
+      commentNum: 0 
     };
   },
   created() {
@@ -46,6 +47,21 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+
+      this.$axios
+      .get("/api/ratings")
+      .then(function (response) {
+        var dataSource=response.data;
+        if(dataSource.code==0){
+          that.commentNum= dataSource.data.comment_num;
+
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      
   },
 };
 </script>
