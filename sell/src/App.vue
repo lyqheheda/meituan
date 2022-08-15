@@ -7,7 +7,9 @@
     <Mynav :commentNum="commentNum" />
 
     <!-- 主体内容 -->
+    <keep-alive>
     <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
