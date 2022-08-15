@@ -29,7 +29,7 @@
         </div>
         <div class="list-content" ref="listContent">
             <ul>
-                <li class="food" v-for="food in selectFoods">
+                <li class="food-item" v-for="food in selectFoods">
                     <div class="desc-wrapper">
                         <div class="desc-left">
                             <p class="name">{{food.name}}</p>
@@ -309,24 +309,24 @@ export default {
     margin-top: -2px;
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food{
+.shopcart-wrapper .shopcart-list .list-content .food-item{
     height: 38px;
     padding: 12px 12px 10px 12px;
     border-bottom: 1px solid #f4f4f4;
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper{
     float: left;
     width: 240px;
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper .desc-left{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper .desc-left{
     float: left;
     width:170px;
 
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper .desc-left .name{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper .desc-left .name{
     font-size: 16px;
     margin-bottom: 8px;
     height: 16px;
@@ -338,12 +338,12 @@ export default {
     overflow: hidden;
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper .desc-left .unit{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper .desc-left .unit{
     font-size: 12px;
     color: #b4b4b4;
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper .desc-left .description{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper .desc-left .description{
     font-size: 12px;
     color: #b4b4b4;
     height: 12px;
@@ -356,19 +356,19 @@ export default {
 }
 
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper .desc-right{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper .desc-right{
     float: right;
     width: 70px;
     text-align: right;
 }
 
-.shopcart-wrapper .shopcart-list .list-content .food .desc-wrapper .desc-right .price{
+.shopcart-wrapper .shopcart-list .list-content .food-item .desc-wrapper .desc-right .price{
     font-size: 12px;
     line-height: 38px;
 }
 
 
-.shopcart-wrapper .shopcart-list .list-content .food .cartcontrol-wrapper{
+.shopcart-wrapper .shopcart-list .list-content .food-item .cartcontrol-wrapper{
     float:right;
     margin-top: 6px;
 }
