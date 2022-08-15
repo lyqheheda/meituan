@@ -1,5 +1,5 @@
 <template>
-  <div class="ratings">
+  <div class="ratings" ref="ratingView">
     <div class="ratings-wrapper">
       <div class="overview">
         <div class="overview-left">
@@ -42,8 +42,33 @@
             {{ratings.tab[2].comment_score_title}}
           </span>
         </div>
-        <div class="labels-view"></div>
-        <div class="rating-list"></div>
+        <div class="labels-view">
+          <span v-for="item in ratings.labels" class="item" :class="{'highlight':item.label_star>0}">
+            {{item.content}}{{item.label_count}}
+          </span>
+        </div>
+        <ul class="rating-list">
+          <li v-for="comment in selectComments" class="comment-item">
+                <div class="comment-header">
+                    <img :src="comment.user_pic_url" v-if="comment.user_pic_url">
+                    <img src="./anonymity.png" v-if="!comment.user_pic_url">
+                </div>
+                <div class="comment-main">
+                    <div class="user">{{comment.user_name}}</div>
+                    <div class="time">{{formatDate(comment.comment_time)}}</div>
+                    <div class="star-wrapper">
+                      <span class="text">评分</span>
+                      <Star :score="comment.order_comment_score" class="star"></Star>
+                    </div>
+                    <div class="c_content" v-html="commentStr(comment.comment)" >
+                      <div class="img-wrapper">
+                      <img v-for="item in comment.comment_pics" :src="item.thumbnail_url" alt="">
+                      </div>
+                    </div>
+                    
+                </div>
+            </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -52,6 +77,8 @@
 <script>
 import Star from '../Star/Star.vue';
 import Split from "../Split/Split.vue";
+import BScroll from "better-scroll";
+
 
 const ALL =2; //全部
 const PICTURE =1; //有图
@@ -67,11 +94,64 @@ export default {
     methods:{
       selectTypeFn(type){
         this.selectType=type;
+        this.$nextTick(()=>{
+          this.scroll.refresh()
+
+        })
+      },
+      formatDate(time) {
+				let date = new Date(time * 1000);
+
+				// 时间格式
+				let fmt = 'yyyy.MM.dd';
+
+				if(/(y+)/.test(fmt)) { // 年
+					let year = date.getFullYear().toString();
+					fmt = fmt.replace(RegExp.$1, year);
+				}
+				if(/(M+)/.test(fmt)) { // 月
+					let mouth = date.getMonth() + 1;
+					if(mouth < 10) {
+						mouth = '0' + mouth;
+					}
+					fmt = fmt.replace(RegExp.$1, mouth);
+				}
+				if(/(d+)/.test(fmt)) { // 日
+					let mydate = date.getDate();
+					if(mydate < 10) {
+						mydate = '0' + mydate;
+					}
+					fmt = fmt.replace(RegExp.$1, mydate);
+				}
+
+				return fmt;
+			},
+      commentStr(content){
+        let rel =/#[^#]+#/g;
+        return content.replace(rel,'<i>$&</i>')
+      }
+    },
+    computed:{
+      selectComments(){
+        if(this.selectType==ALL){//全部
+            return this.ratings.comments;
+        }else if(this.selectType==PICTURE){//有图
+            let arr=[];
+            this.ratings.comments.forEach((comment)=>{
+              if(comment.comment_pics.length){
+                arr.push(comment);
+              }
+            });
+            return arr;
+        }else{//点评
+            return this.ratings.comments_dp.comments;
+        }
       }
     },
     components:{
       Star,
-      Split
+      Split,
+      BScroll
     },
     created(){
       this.$axios
@@ -80,6 +160,17 @@ export default {
         var dataSource=response.data;
         if(dataSource.code==0){
           this.ratings= dataSource.data;
+
+          //初始化滚动
+          this.$nextTick(()=>{
+            if(!this.scroll){
+              this.scroll=new BScroll(this.$refs.ratingView,{
+                click:true
+              });
+            }else{
+              this.scroll.refresh();
+            }
+          })
 
         }
       })
