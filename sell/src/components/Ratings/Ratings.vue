@@ -61,9 +61,9 @@
                       <Star :score="comment.order_comment_score" class="star"></Star>
                     </div>
                     <div class="c_content" v-html="commentStr(comment.comment)" >
-                      <div class="img-wrapper">
-                      <img v-for="item in comment.comment_pics" :src="item.thumbnail_url" alt="">
-                      </div>
+                    </div>
+                    <div class="img-wrapper" v-if="comment.comment_pics.length">
+                    <img v-for="item in comment.comment_pics" :src="item.thumbnail_url" alt="">
                     </div>
                     
                 </div>
@@ -142,6 +142,7 @@ export default {
                 arr.push(comment);
               }
             });
+            // console.log(arr[0].comment_pics[0].thumbnail_url);
             return arr;
         }else{//点评
             return this.ratings.comments_dp.comments;
