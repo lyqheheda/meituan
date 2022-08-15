@@ -289,6 +289,7 @@ export default {
     border: 1px solid #ffb000;
     margin-bottom: 11px;
     border-radius: 3px;
+    border-right: 0;
 }
 
 .ratings .content .rating-select .item{
@@ -304,7 +305,7 @@ export default {
 }
 
 .ratings .content .rating-select .item:last-child{
-    border-right: 0;
+    /* border-right: 0; */
 }
 
 .ratings .content .rating-select .item:last-child img{
@@ -386,6 +387,7 @@ export default {
     float: left;
     margin-top: 12px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .ratings .content .rating-list .comment-item .comment-main .star-wrapper .text{
