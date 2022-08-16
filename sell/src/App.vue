@@ -35,9 +35,8 @@ export default {
 
     var that = this
 
-
     this.$axios
-      .get("/api/goods")
+      .get("../static/goods.json")
       .then(function (response) {
         var dataSource=response.data;
         if(dataSource.code==0){
@@ -51,7 +50,7 @@ export default {
       });
 
       this.$axios
-      .get("/api/ratings")
+      .get("../static/ratings.json")
       .then(function (response) {
         var dataSource=response.data;
         if(dataSource.code==0){

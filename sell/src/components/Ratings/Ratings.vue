@@ -156,7 +156,7 @@ export default {
     },
     created(){
       this.$axios
-      .get("/api/ratings")
+      .get("../data/ratings.json")
       .then((response)=>{
         var dataSource=response.data;
         if(dataSource.code==0){

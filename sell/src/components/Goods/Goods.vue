@@ -110,7 +110,7 @@ export default {
   created() {
     // 发起异步请求，获取数据
     this.$axios
-      .get("/api/goods")
+      .get('../data/goods.json')
       .then((response) => {
         var dataSource = response.data;
         if (dataSource.code == 0) {
